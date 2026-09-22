@@ -210,12 +210,18 @@
 
 @media (max-width: 760px) {
   .products-container {
-    padding: 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .list-title-row {
     align-items: stretch;
     flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .list-title-row h2 {
+    font-size: 1.4rem;
   }
 
   .list-search {
@@ -224,10 +230,15 @@
 
   .products-list {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .products-header,
   .product-row {
-    min-width: 720px;
+    min-width: 680px;
+  }
+
+  .product-edit-modal {
+    padding: 1.25rem;
   }
 }

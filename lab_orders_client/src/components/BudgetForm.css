@@ -77,9 +77,13 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 760px) {
   .budget-form-container {
     padding: 1rem;
+  }
+
+  .budget-form-container h2 {
+    font-size: 1.4rem;
   }
 
   .budget-form {

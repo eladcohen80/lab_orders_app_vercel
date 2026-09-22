@@ -98,9 +98,13 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 760px) {
   .supplier-form-container {
     padding: 1rem;
+  }
+
+  .supplier-form-container h2 {
+    font-size: 1.4rem;
   }
 
   .supplier-form {
@@ -108,6 +112,14 @@
   }
 
   .submit-button {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button {
     width: 100%;
   }
 }

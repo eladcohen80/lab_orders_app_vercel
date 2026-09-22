@@ -520,14 +520,20 @@
   font-weight: 700;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 760px) {
   .orders-container {
-    padding: 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .orders-title-row {
     align-items: stretch;
     flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .orders-title-row h2 {
+    font-size: 1.4rem;
   }
 
   .orders-title-row .list-search {
@@ -537,6 +543,7 @@
   .orders-export {
     align-items: stretch;
     flex-wrap: wrap;
+    gap: 0.5rem;
   }
 
   .orders-export label {
@@ -552,13 +559,20 @@
     flex: 0 0 2.25rem;
   }
 
-  .order-details {
-    grid-template-columns: 1fr;
+  /* הטבלה עם גלילה אופקית במובייל */
+  .orders-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .order-row,
   .order-header {
-    min-width: 980px;
+    min-width: 900px;
+  }
+
+  /* מודל פרטים במובייל */
+  .order-details {
+    grid-template-columns: 1fr;
   }
 
   .order-detail-description,
@@ -570,11 +584,22 @@
     grid-template-columns: 1fr;
   }
 
+  .order-edit-form .comments-field,
+  .order-edit-actions {
+    grid-column: auto;
+  }
+
+  .order-modal {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
   .orders-pagination {
     gap: 0.5rem;
   }
 
   .pagination-button {
-    min-width: 5.5rem;
+    min-width: 5rem;
+    font-size: 0.85rem;
   }
 }

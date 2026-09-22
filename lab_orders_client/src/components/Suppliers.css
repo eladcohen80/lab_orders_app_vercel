@@ -225,25 +225,36 @@
 }
 
 @media (max-width: 760px) {
+  .suppliers-container {
+    padding: 1.25rem 1rem;
+  }
+
   .list-title-row {
     align-items: stretch;
     flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .list-title-row h2 {
+    font-size: 1.4rem;
   }
 
   .list-search {
     max-width: none;
   }
 
-  .suppliers-container {
-    padding: 1rem;
-  }
-
   .suppliers-list {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .suppliers-header,
   .supplier-row {
-    min-width: 870px;
+    min-width: 820px;
+  }
+
+  .modal-content {
+    max-height: 85vh;
   }
 }

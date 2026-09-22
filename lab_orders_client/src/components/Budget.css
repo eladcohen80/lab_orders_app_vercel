@@ -227,14 +227,20 @@
   color: #fff;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 760px) {
   .budget-container {
-    padding: 1rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .budget-container h1 {
+    font-size: 1.4rem;
   }
 
   .list-title-row {
     align-items: stretch;
     flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .list-search {
@@ -244,11 +250,16 @@
   .budget-table {
     display: block;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     white-space: nowrap;
   }
 
   .budget-table th,
   .budget-table td {
     padding: 0.75rem;
+  }
+
+  .budget-edit-modal {
+    padding: 1.25rem;
   }
 }

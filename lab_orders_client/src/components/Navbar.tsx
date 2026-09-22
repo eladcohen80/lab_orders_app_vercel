@@ -1,5 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
 
 type NavbarProps = {
@@ -9,9 +9,31 @@ type NavbarProps = {
 
 export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
   const navigate = useNavigate();
+  const location = useLocation();
   const [openMenu, setOpenMenu] = useState<'orders' | 'suppliers' | 'budgets' | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   const token = localStorage.getItem("token") ?? false;
+
+  // סגירת תפריט המובייל בעת ניווט לדף אחר
+  useEffect(() => {
+    setMobileOpen(false);
+    setOpenMenu(null);
+  }, [location.pathname]);
+
+  // סגירת תפריט המובייל בלחיצה מחוץ לנאב
+  useEffect(() => {
+    if (!mobileOpen) return;
+    function handleClickOutside(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setMobileOpen(false);
+        setOpenMenu(null);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [mobileOpen]);
 
   function logout() {
     localStorage.removeItem("token");
@@ -27,13 +49,33 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
     setOpenMenu(null);
   }
 
+  const dropdownProps = (menu: 'orders' | 'suppliers' | 'budgets') => ({
+    onMouseEnter: () => setOpenMenu(menu),
+    onMouseLeave: closeMenu,
+  });
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navRef}>
       <div className="navbar-brand">
         <Link to="/" className="nav-link" style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>Home</Link>
       </div>
-      <div className="navbar-links">
-        <div className="nav-dropdown" onMouseEnter={() => setOpenMenu('orders')} onMouseLeave={closeMenu}>
+
+      {/* כפתור המבורגר – מוצג רק במובייל */}
+      <button
+        type="button"
+        className="hamburger-button"
+        aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((v) => !v)}
+      >
+        <span className={`hamburger-icon ${mobileOpen ? 'open' : ''}`}>
+          <span /><span /><span />
+        </span>
+      </button>
+
+      {/* תפריט ניווט */}
+      <div className={`navbar-links ${mobileOpen ? 'mobile-open' : ''}`}>
+        <div className="nav-dropdown" {...dropdownProps('orders')}>
           <button type="button" className="nav-menu-button" onClick={() => toggleMenu('orders')} aria-expanded={openMenu === 'orders'} aria-haspopup="menu">
             Orders <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
@@ -44,7 +86,7 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
             </div>
           )}
         </div>
-        <div className="nav-dropdown" onMouseEnter={() => setOpenMenu('suppliers')} onMouseLeave={closeMenu}>
+        <div className="nav-dropdown" {...dropdownProps('suppliers')}>
           <button type="button" className="nav-menu-button" onClick={() => toggleMenu('suppliers')} aria-expanded={openMenu === 'suppliers'} aria-haspopup="menu">
             Suppliers <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
@@ -55,7 +97,7 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
             </div>
           )}
         </div>
-        <div className="nav-dropdown" onMouseEnter={() => setOpenMenu('budgets')} onMouseLeave={closeMenu}>
+        <div className="nav-dropdown" {...dropdownProps('budgets')}>
           <button type="button" className="nav-menu-button" onClick={() => toggleMenu('budgets')} aria-expanded={openMenu === 'budgets'} aria-haspopup="menu">
             Budgets <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
@@ -67,29 +109,32 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
           )}
         </div>
         <Link to="/products" className="nav-link">Products</Link>
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={onToggleTheme}
-          aria-pressed={isDarkMode}
-          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-          title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          <span className="theme-toggle-track" aria-hidden="true">
-            <span className="theme-toggle-sun">☀</span>
-            <span className="theme-toggle-moon">☾</span>
-            <span className="theme-toggle-thumb" />
-          </span>
-        </button>
-        {!token && (
-          <>
-            <Link to="/login" className="nav-link">Login</Link>
-            <Link to="/register" className="nav-link">Register</Link>
-          </>
-        )}
-        {token && (
-          <button onClick={logout} className="logout-btn">Logout</button>
-        )}
+
+        <div className="navbar-actions">
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={onToggleTheme}
+            aria-pressed={isDarkMode}
+            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            <span className="theme-toggle-track" aria-hidden="true">
+              <span className="theme-toggle-sun">☀</span>
+              <span className="theme-toggle-moon">☾</span>
+              <span className="theme-toggle-thumb" />
+            </span>
+          </button>
+          {!token && (
+            <>
+              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/register" className="nav-link">Register</Link>
+            </>
+          )}
+          {token && (
+            <button onClick={logout} className="logout-btn">Logout</button>
+          )}
+        </div>
       </div>
     </nav>
   );

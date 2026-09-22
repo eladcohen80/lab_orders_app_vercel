@@ -104,6 +104,12 @@
 body {
   margin: 0;
   background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* מנע גלישה אופקית לא רצויה בכל האלמנטים */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 h1,
