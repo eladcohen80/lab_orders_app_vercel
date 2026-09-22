@@ -1,6 +1,5 @@
 .suppliers-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding: 2rem;
   box-sizing: border-box;
 }
@@ -17,6 +16,9 @@
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .list-title-row h2 {
@@ -231,15 +233,19 @@
 }
 
 @media (max-width: 760px) {
-  .suppliers-container {
+    .suppliers-container {
+    width: 100%;
     padding: 0.75rem 1rem 1.25rem;
+    box-sizing: border-box;
   }
 
-  .list-title-row {
+    .list-title-row {
     align-items: stretch;
     flex-direction: column;
     gap: 0.3rem;
     margin-bottom: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .list-title-row h2 {
