@@ -1,28 +1,42 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addSupplier } from '../services/supplierService';
+import { addSupplier, updateSupplier } from '../services/supplierService';
 import type { Supplier } from '../types/Supplier';
 import './SupplierForm.css';
 
-export default function SupplierForm() {
+interface SupplierFormProps {
+    initialSupplier?: Supplier;
+    onSuccess?: (supplier: Supplier) => void;
+    onCancel?: () => void;
+}
+
+export default function SupplierForm({ initialSupplier, onSuccess, onCancel }: SupplierFormProps) {
     const navigate = useNavigate();
-    const [supplier, setSupplier] = useState<Supplier>({
-        supplier_name: '',
-        contact_person: '',
-        email: '',
-        phone: ''
-    });
+    const isEditMode = !!initialSupplier;
+    const [supplier, setSupplier] = useState<Supplier>(
+        initialSupplier ?? {
+            supplier_name: '',
+            contact_person: '',
+            email: '',
+            phone: ''
+        }
+    );
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            await addSupplier(supplier);
-            alert('Supplier added successfully');
-            navigate('/suppliers');
+            if (isEditMode) {
+                await updateSupplier(supplier);
+                onSuccess?.(supplier);
+            } else {
+                await addSupplier(supplier);
+                alert('Supplier added successfully');
+                navigate('/suppliers');
+            }
         }
         catch (error: any) {
-            console.error('Error adding supplier:', error);
-            alert(error.message || 'Failed to add supplier');
+            console.error('Error saving supplier:', error);
+            alert(error.message || 'Failed to save supplier');
         }   
     };
 
@@ -35,7 +49,7 @@ export default function SupplierForm() {
 
     return (
         <div className="supplier-form-container">
-            <h2>Add New Supplier</h2>
+            <h2>{isEditMode ? 'Edit Supplier' : 'Add New Supplier'}</h2>
             <form onSubmit={handleSubmit} className="supplier-form">
                 <div className="form-group">
                     <label>Supplier Name</label>
@@ -53,7 +67,16 @@ export default function SupplierForm() {
                     <label>Phone</label>
                     <input type="text" name="phone" value={supplier.phone} onChange={handleChange} placeholder="Phone" />
                 </div>
-                <button type="submit" className="submit-button">Add Supplier</button>
+                <div className="form-actions">
+                    {isEditMode && (
+                        <button type="button" className="cancel-button" onClick={onCancel}>
+                            Cancel
+                        </button>
+                    )}
+                    <button type="submit" className="submit-button">
+                        {isEditMode ? 'Save Changes' : 'Add Supplier'}
+                    </button>
+                </div>
             </form>
         </div>
     );

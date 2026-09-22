@@ -54,6 +54,28 @@
   box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.cancel-button {
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+.cancel-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .submit-button {
   justify-self: end;
   padding: 0.65rem 1.1rem;

@@ -1,8 +1,9 @@
-import {getSuppliers, deleteSupplier, updateSupplier,} from "../services/supplierService";
+import { getSuppliers, deleteSupplier } from "../services/supplierService";
 import { useEffect, useState } from "react";
 import type { Supplier } from "../types/Supplier";
 import outlookIcon from '../assets/outlook_icon.png';
 import whatsappIcon from '../assets/whatsapp_icon.png';
+import SupplierForm from './SupplierForm';
 import './Suppliers.css';
 
 type SortKey = keyof Supplier | null;
@@ -14,7 +15,8 @@ export default function Suppliers() {
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [message, setMessage] = useState('');
-        const [isLoading, setIsLoading] = useState(true);
+          const [isLoading, setIsLoading] = useState(true);
+      const [editingSupplier, setEditingSupplier] = useState<Supplier | null>(null);
 
   function getErrorMessage(error: any): string {
     if (error.response && error.response.data && error.response.data.message) {
@@ -94,26 +96,21 @@ export default function Suppliers() {
         }
     }
 
-    async function handleUpdate(supplierId: number) {
+        function handleEditOpen(supplierId: number) {
         const supplierToUpdate = suppliers.find(supplier => supplier.supplier_id === supplierId);
-        if (!supplierToUpdate) {
-            alert('Supplier not found');
-            return;
-        }
-        const newSupplierName = prompt('Enter new supplier name:', supplierToUpdate.supplier_name);
-        if (newSupplierName === null || newSupplierName.trim() === '') {
-            alert('Supplier name cannot be empty');
-            return;
-        }
-        try {
-            const updatedSupplier = { ...supplierToUpdate, supplier_name: newSupplierName };
-            await updateSupplier(updatedSupplier);
-            setSuppliers(suppliers.map(supplier => supplier.supplier_id === supplierId ? updatedSupplier : supplier));
-        }
-        catch (error: any) {
-            console.error('Error updating supplier:', error);
-            alert(getErrorMessage(error));
-        }
+        if (!supplierToUpdate) return;
+        setEditingSupplier(supplierToUpdate);
+    }
+
+    function handleEditSuccess(updatedSupplier: Supplier) {
+        setSuppliers(suppliers.map(supplier =>
+            supplier.supplier_id === updatedSupplier.supplier_id ? updatedSupplier : supplier
+        ));
+        setEditingSupplier(null);
+    }
+
+    function handleEditCancel() {
+        setEditingSupplier(null);
     }
 
     function handleContact(email: string) {
@@ -130,6 +127,17 @@ export default function Suppliers() {
 
     return (
         <div className="suppliers-container">
+            {editingSupplier && (
+                <div className="modal-overlay" role="dialog" aria-modal="true" aria-label="Edit Supplier">
+                    <div className="modal-content">
+                        <SupplierForm
+                            initialSupplier={editingSupplier}
+                            onSuccess={handleEditSuccess}
+                            onCancel={handleEditCancel}
+                        />
+                    </div>
+                </div>
+            )}
             <div className="list-title-row">
                 <h2>Suppliers</h2>
                 <label className="list-search" aria-label="Search suppliers">
@@ -192,7 +200,7 @@ export default function Suppliers() {
                                 >
                                     <img src={outlookIcon} alt="" aria-hidden="true" />
                                 </button>
-                                <button onClick={() => handleUpdate(supplier.supplier_id!)}>Edit</button>
+                                <button onClick={() => handleEditOpen(supplier.supplier_id!)}>Edit</button>
                                 <button onClick={() => handleDelete(supplier.supplier_id!)}>Delete</button>
                             </div>
                         </div>
