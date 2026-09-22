@@ -55,10 +55,14 @@ app.get('/debug', (_req, res) => {
   });
 });
 
-// Run DB migration only outside of serverless cold-start to avoid blocking
-sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pending'`.catch(
-  (error) => console.error('DB migration warning:', error)
-);
+// Run DB migration safely
+try {
+  sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pending'`.catch(
+    (error) => console.error('DB migration warning:', error)
+  );
+} catch (error) {
+  console.error('DB migration skipped:', error);
+}
 
 // Local development server
 if (process.env.NODE_ENV !== 'production') {
