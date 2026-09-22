@@ -578,12 +578,12 @@
     }
 
         .orders-export {
-          align-items: flex-end;
-          flex-wrap: nowrap;
-          gap: 0.5rem;
-          width: 100%;
-          box-sizing: border-box;
-        }
+              align-items: flex-start;
+              flex-wrap: nowrap;
+              gap: 0.5rem;
+              width: 100%;
+              box-sizing: border-box;
+            }
 
         .orders-export-group {
       flex: 1;
@@ -601,10 +601,11 @@
       font-size: 0.8rem;
     }
 
-    .export-action-label {
+        .export-action-label {
       flex: 0 0 auto;
       display: grid;
       gap: 0.2rem;
+      align-items: flex-end;
     }
 
     .export-button {
