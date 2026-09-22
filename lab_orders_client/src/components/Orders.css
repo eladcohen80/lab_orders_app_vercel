@@ -536,8 +536,8 @@
     font-size: 1.4rem;
   }
 
-  .orders-title-row .list-search {
-    max-width: none;
+    .orders-title-row .list-search {
+    max-width: 320px;
   }
 
   .orders-export {

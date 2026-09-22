@@ -243,8 +243,8 @@
     margin-bottom: 1rem;
   }
 
-  .list-search {
-    max-width: none;
+    .list-search {
+    max-width: 320px;
   }
 
   .budget-table {

@@ -240,8 +240,8 @@
     font-size: 1.4rem;
   }
 
-  .list-search {
-    max-width: none;
+    .list-search {
+    max-width: 320px;
   }
 
   .suppliers-list {
