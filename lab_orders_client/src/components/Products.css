@@ -1,0 +1,233 @@
+.products-container {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.products-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-h);
+  font-size: 1.8rem;
+}
+
+.list-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.list-title-row h2 {
+  margin: 0;
+}
+
+.list-search {
+  display: grid;
+  flex: 0 1 520px;
+  max-width: 520px;
+  gap: 0.35rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.list-search input {
+  min-height: 2.35rem;
+  box-sizing: border-box;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.list-search input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-bg);
+  outline-offset: 1px;
+}
+
+.products-list {
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+}
+
+.products-header,
+.product-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 2.2fr) minmax(110px, 0.9fr) minmax(110px, 0.9fr) minmax(80px, 0.5fr) minmax(125px, 1.1fr);
+  gap: 0.75rem;
+  align-items: center;
+  text-align: left;
+}
+
+.products-header {
+  padding: 0.7rem 1rem;
+  background: var(--surface-muted);
+  border-bottom: 2px solid var(--border-strong);
+}
+
+.products-header button {
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.products-header button:hover {
+  color: var(--text-h);
+}
+
+.product-row {
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.18s ease;
+}
+
+.product-row:hover {
+  background: var(--surface-muted);
+}
+
+.product-row:last-child {
+  border-bottom: 0;
+}
+
+.product-row span {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-h);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-actions {
+  display: flex;
+  justify-self: end;
+  gap: 0.45rem;
+}
+
+.product-actions button,
+.product-edit-actions button {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.product-actions button:hover,
+.product-edit-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.product-actions button:last-child {
+  border-color: #b42318;
+  color: #b42318;
+}
+
+.product-actions button:last-child:hover {
+  border-color: #b42318;
+  background: #b42318;
+  color: #fff;
+}
+
+.product-modal-backdrop {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.product-edit-modal {
+  display: grid;
+  width: min(460px, 100%);
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.product-edit-modal h2 {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.product-edit-modal label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-h);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.product-edit-modal input {
+  min-height: 2.35rem;
+  box-sizing: border-box;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.product-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.product-edit-actions button[type='submit'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .products-container {
+    padding: 1rem;
+  }
+
+  .list-title-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .list-search {
+    max-width: none;
+  }
+
+  .products-list {
+    overflow-x: auto;
+  }
+
+  .products-header,
+  .product-row {
+    min-width: 720px;
+  }
+}

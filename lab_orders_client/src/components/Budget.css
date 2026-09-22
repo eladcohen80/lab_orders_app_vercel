@@ -1,0 +1,254 @@
+.budget-container {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.budget-container h1 {
+  margin: 0 0 1.5rem;
+  color: var(--text-h);
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.list-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.list-title-row h1 {
+  margin: 0;
+}
+
+.list-search {
+  display: grid;
+  flex: 0 1 520px;
+  max-width: 520px;
+  gap: 0.35rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.list-search input {
+  min-height: 2.35rem;
+  box-sizing: border-box;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.list-search input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-bg);
+  outline-offset: 1px;
+}
+
+.budget-container > p:not(.message) {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: center;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  text-align: left;
+}
+
+.budget-table {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  border-spacing: 0;
+  background: var(--surface);
+  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+  text-align: left;
+}
+
+.budget-table th,
+.budget-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.budget-table th {
+  background: var(--surface-muted);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.budget-table th:last-child {
+  cursor: default;
+}
+
+.budget-table tbody tr {
+  transition: background-color 0.18s ease;
+}
+
+.budget-table tbody tr:hover {
+  background: var(--surface-muted);
+}
+
+.budget-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.budget-table td {
+  color: var(--text-h);
+}
+
+.budget-table td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.budget-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.budget-table button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.budget-table button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.budget-table button:last-child {
+  margin-right: 0;
+  border-color: #b42318;
+  color: #b42318;
+}
+
+.budget-table button:last-child:hover {
+  background: #b42318;
+  color: #fff;
+}
+
+.budget-modal-backdrop {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.budget-edit-modal {
+  display: grid;
+  width: min(460px, 100%);
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.budget-edit-modal h2 {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 1.35rem;
+}
+
+.budget-edit-modal .form-group {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.budget-edit-modal label {
+  color: var(--text-h);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.budget-edit-modal input {
+  min-height: 2.5rem;
+  box-sizing: border-box;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.budget-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+
+.budget-edit-actions button {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+}
+
+.budget-edit-actions button[type='submit'] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 620px) {
+  .budget-container {
+    padding: 1rem;
+  }
+
+  .list-title-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .list-search {
+    max-width: none;
+  }
+
+  .budget-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .budget-table th,
+  .budget-table td {
+    padding: 0.75rem;
+  }
+}

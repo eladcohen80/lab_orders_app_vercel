@@ -1,0 +1,224 @@
+.suppliers-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.suppliers-container h2 {
+  margin-bottom: 1.5rem;
+  color: var(--text-h);
+  font-size: 1.8rem;
+}
+
+.list-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.list-title-row h2 {
+  margin: 0;
+}
+
+.list-search {
+  display: grid;
+  flex: 0 1 520px;
+  max-width: 520px;
+  gap: 0.35rem;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.list-search input {
+  min-height: 2.35rem;
+  box-sizing: border-box;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.list-search input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-bg);
+  outline-offset: 1px;
+}
+
+.suppliers-list {
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+}
+
+.suppliers-header,
+.supplier-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 1.2fr) minmax(130px, 1fr) minmax(180px, 1.4fr) minmax(110px, 0.9fr) minmax(180px, 1.5fr);
+  gap: 0.75rem;
+  align-items: center;
+  text-align: left;
+}
+
+.suppliers-header {
+  padding: 0.7rem 1rem;
+  background: var(--surface-muted);
+  border-bottom: 2px solid var(--border-strong);
+}
+
+.supplier-row {
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.18s ease;
+}
+
+.supplier-row:hover {
+  background: var(--surface-muted);
+}
+
+.supplier-row:last-child {
+  border-bottom: 0;
+}
+
+.suppliers-header .supplier-column {
+  overflow: hidden;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suppliers-header .supplier-column:not(:last-child) {
+  cursor: pointer;
+}
+
+.suppliers-header .supplier-column:not(:last-child):hover {
+  color: var(--text-h);
+}
+
+.supplier-row .supplier-column {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-h);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.supplier-row .whatsapp-button,
+.supplier-row .outlook-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.supplier-row .whatsapp-button:hover,
+.supplier-row .outlook-button:hover {
+  background: transparent;
+  border: 0;
+  color: inherit;
+}
+
+.supplier-row .whatsapp-button img,
+.supplier-row .outlook-button img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.supplier-row .whatsapp-button:hover img,
+.supplier-row .outlook-button:hover img {
+  transform: scale(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .supplier-row .whatsapp-button:hover img,
+  .supplier-row .outlook-button:hover img {
+    transform: none;
+    transition: none;
+  }
+}
+
+.supplier-row .supplier-column:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.supplier-row button {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-h);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.supplier-row button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.supplier-row > .supplier-column:last-child button:last-child {
+  border-color: #b42318;
+  color: #b42318;
+}
+
+.supplier-row > .supplier-column:last-child button:last-child:hover {
+  background: #b42318;
+  color: #fff;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #fecdca;
+  border-radius: 5px;
+  background: #fef3f2;
+  color: #b42318;
+}
+
+@media (max-width: 760px) {
+  .list-title-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .list-search {
+    max-width: none;
+  }
+
+  .suppliers-container {
+    padding: 1rem;
+  }
+
+  .suppliers-list {
+    overflow-x: auto;
+  }
+
+  .suppliers-header,
+  .supplier-row {
+    min-width: 870px;
+  }
+}

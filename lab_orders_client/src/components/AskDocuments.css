@@ -1,0 +1,248 @@
+.ai-assistant-panel {
+  position: fixed;
+  z-index: 20;
+  top: 84px;
+  right: 20px;
+  width: min(340px, calc(100vw - 40px));
+  max-height: calc(100svh - 104px);
+  overflow: hidden;
+  text-align: left;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.ai-assistant-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.ai-assistant-header.is-dragging {
+  cursor: grabbing;
+}
+
+.ai-assistant-header h2,
+.ai-assistant-answer h3 {
+  margin: 0;
+  color: var(--text-h);
+}
+
+.ai-assistant-header h2 {
+  font-size: 20px;
+}
+
+.ai-assistant-header p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.ai-assistant-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.ai-assistant-clear {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.ai-assistant-clear:hover:not(:disabled) {
+  color: #ffffff;
+  background: #b44b4b;
+  border-color: #b44b4b;
+}
+
+.ai-assistant-clear:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.ai-assistant-collapse {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  padding: 0;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.ai-assistant-collapse:hover {
+  color: #ffffff;
+  background: #167a70;
+  border-color: #167a70;
+}
+
+.ai-assistant-expand {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 52px;
+  min-height: 42px;
+  justify-content: center;
+  padding: 8px 10px 8px 8px;
+  color: #ffffff;
+  background: #167a70;
+  border: 1px solid #0d5d55;
+  border-right: 0;
+  border-radius: 6px 0 0 6px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transform: translateY(-50%);
+}
+
+.ai-assistant-expand:hover {
+  background: #0d5d55;
+}
+
+.ai-assistant-body {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 16px 20px 20px;
+  max-height: calc(100svh - 208px);
+  overflow: hidden;
+}
+
+.ai-assistant-history {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.ai-assistant-conversation {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.ai-assistant-conversation + .ai-assistant-conversation {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.ai-assistant-question {
+  padding: 10px 12px;
+  background: var(--bg);
+  border-left: 3px solid #167a70;
+}
+
+.ai-assistant-question h3,
+.ai-assistant-question p,
+.ai-assistant-answer p {
+  margin: 0;
+}
+
+.ai-assistant-question h3 {
+  margin-bottom: 4px;
+  color: var(--text-h);
+  font-size: 13px;
+}
+
+.ai-assistant-composer {
+  display: grid;
+  gap: 12px;
+}
+
+.ai-assistant-body textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  padding: 10px;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  font: inherit;
+  font-size: 14px;
+}
+
+.ai-assistant-submit {
+  justify-self: end;
+  padding: 8px 16px;
+  color: #ffffff;
+  background: #167a70;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+
+.ai-assistant-submit:hover:not(:disabled) {
+  background: #0d5d55;
+}
+
+.ai-assistant-submit:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.ai-assistant-answer {
+  display: grid;
+  gap: 8px;
+  padding: 0 2px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ai-assistant-answer[dir='rtl'] {
+  text-align: right;
+}
+
+.ai-assistant-general-note {
+  color: var(--text);
+  opacity: 0.7;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.ai-assistant-answer h3 {
+  font-size: 16px;
+}
+
+@media (max-width: 720px) {
+  .ai-assistant-panel {
+    top: auto;
+    right: 12px;
+    bottom: 12px;
+    width: min(420px, calc(100vw - 24px));
+    max-height: min(56svh, 440px);
+  }
+
+  .ai-assistant-body {
+    max-height: calc(min(56svh, 440px) - 104px);
+  }
+}
