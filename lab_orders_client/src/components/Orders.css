@@ -578,15 +578,15 @@
     }
 
         .orders-export {
-      align-items: stretch;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
+          align-items: flex-end;
+          flex-wrap: nowrap;
+          gap: 0.5rem;
+          width: 100%;
+          box-sizing: border-box;
+        }
 
-    .orders-export-group {
-      width: 100%;
+        .orders-export-group {
+      flex: 1;
       gap: 0.05rem;
     }
 
@@ -594,19 +594,26 @@
       font-size: 0.7rem;
     }
 
-    .orders-export input {
+        .orders-export input {
       height: 1.85rem;
       min-height: 1.85rem;
       padding: 0.2rem 0.4rem;
       font-size: 0.8rem;
     }
 
+    .export-action-label {
+      flex: 0 0 auto;
+      display: grid;
+      gap: 0.2rem;
+    }
+
     .export-button {
-    justify-content: center;
-    flex: 0 0 1.9rem;
-    min-height: 1.9rem;
-    padding: 0.2rem;
-  }
+      width: 1.85rem;
+      height: 1.85rem;
+      min-height: 1.85rem;
+      padding: 0.15rem;
+      flex: 0 0 auto;
+    }
 
   /* הטבלה עם גלילה אופקית במובייל */
   .orders-list {
