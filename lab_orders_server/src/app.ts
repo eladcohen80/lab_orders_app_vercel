@@ -14,16 +14,21 @@ const app = express();
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',')
-  : ['http://localhost:5173'];
+  : [];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
+      // Allow requests with no origin (e.g. mobile apps, curl)
+      if (!origin) return callback(null, true);
+      // Allow localhost in development
+      if (origin.startsWith('http://localhost')) return callback(null, true);
+      // Allow all Vercel deployments
+      if (origin.endsWith('.vercel.app')) return callback(null, true);
+      // Allow any explicitly configured origins
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+
+      callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
   })
