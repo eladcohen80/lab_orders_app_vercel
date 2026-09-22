@@ -46,6 +46,15 @@ app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });
 });
 
+app.get('/debug', (_req, res) => {
+  res.json({
+    node_env: process.env.NODE_ENV,
+    has_database_url: !!process.env.DATABASE_URL,
+    has_jwt_secret: !!process.env.JWT_SECRET,
+    has_gemini_key: !!process.env.GEMINI_API_KEY,
+  });
+});
+
 // Run DB migration only outside of serverless cold-start to avoid blocking
 sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pending'`.catch(
   (error) => console.error('DB migration warning:', error)
