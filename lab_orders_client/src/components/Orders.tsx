@@ -203,14 +203,27 @@ export default function Orders() {
                     />
                 </label>
                                 <div className="orders-export" aria-label="Export orders to Excel">
-                    <div className="orders-export-group">
+                                        <div className="orders-export-group">
                         <label htmlFor="export-from-date">From date</label>
-                        <input
-                            id="export-from-date"
-                            type="date"
-                            value={exportFromDate}
-                            onChange={(event) => setExportFromDate(event.target.value)}
-                        />
+                        <div className="date-input-wrapper">
+                            <input
+                                id="export-from-date"
+                                type="date"
+                                value={exportFromDate}
+                                onChange={(event) => setExportFromDate(event.target.value)}
+                            />
+                            {exportFromDate && (
+                                <button
+                                    type="button"
+                                    className="clear-date-button"
+                                    onClick={() => setExportFromDate('')}
+                                    title="Clear date filter"
+                                    aria-label="Clear date filter"
+                                >
+                                    ✕
+                                </button>
+                            )}
+                        </div>
                     </div>
                     <span className="export-action-label">
                         <span>Export</span>
