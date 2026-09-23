@@ -317,6 +317,12 @@
   background: rgba(0, 0, 0, 0.48);
 }
 
+@media (max-width: 760px) {
+  .order-modal-backdrop {
+    padding-top: 80px;
+  }
+}
+
 .order-modal {
   width: min(720px, 100%);
   max-height: calc(100vh - 2rem);
@@ -588,11 +594,12 @@
                 .orders-export-group {
       flex: 1 0 100%;
       gap: 0.05rem;
-      margin-right: 0.5rem;
+      justify-self: start;
     }
 
-    .orders-export label {
+        .orders-export label {
       font-size: 0.7rem;
+      text-align: right;
     }
 
         .orders-export input {
