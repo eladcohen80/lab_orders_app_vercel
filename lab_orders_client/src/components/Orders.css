@@ -583,19 +583,20 @@
       font-size: 0.8rem;
     }
 
-                .orders-export {
-              align-items: flex-start;
-              flex-wrap: wrap;
-              gap: 0.5rem;
-              width: 100%;
-              box-sizing: border-box;
-            }
+                        .orders-export {
+          align-items: flex-end;
+          flex-wrap: nowrap;
+          gap: 0.5rem;
+          width: 100%;
+          box-sizing: border-box;
+        }
 
-                .orders-export-group {
-      flex: 1 0 100%;
-      gap: 0.05rem;
-      justify-self: start;
-    }
+        .orders-export-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.05rem;
+          flex: 1;
+        }
 
                 .orders-export label {
       font-size: 0.7rem;
