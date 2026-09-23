@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Auth.css'
@@ -10,6 +10,7 @@ export default function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const SESSION_TIMEOUT = 60 * 60 * 1000; // 1 שעה במילישניות
 
  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
 
@@ -42,9 +43,20 @@ export default function Login() {
         return
       }
 
-      localStorage.setItem( 'token', data.token)
+            // שמירת הטוקן עם זמן expiration
+      const expirationTime = new Date().getTime() + SESSION_TIMEOUT
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('tokenExpiration', expirationTime.toString())
 
       localStorage.setItem( 'user', JSON.stringify(data.user))
+
+      // הגדרת timeout להתנתקות אוטומטית
+      const timeoutId = setTimeout(() => {
+        handleLogout()
+      }, SESSION_TIMEOUT)
+
+      // שמירת timeout ID לביטול בזמן התנתקות
+      localStorage.setItem('logoutTimeoutId', timeoutId.toString())
 
       alert('Login successful')
 
@@ -56,7 +68,41 @@ export default function Login() {
 
       setMessage('Server error')
     }
+    }
+
+  // פונקציה לביצוע logout
+  function handleLogout() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('tokenExpiration')
+    localStorage.removeItem('user')
+    localStorage.removeItem('logoutTimeoutId')
+    setMessage('Session expired. Please log in again.')
+    navigate('/login')
   }
+
+  // בדיקת expiration של הטוקן בעת טעינת הקומפוננטה
+  useEffect(() => {
+    const checkSessionValidity = () => {
+      const tokenExpiration = localStorage.getItem('tokenExpiration')
+      if (tokenExpiration) {
+        const expirationTime = parseInt(tokenExpiration)
+        const currentTime = new Date().getTime()
+        
+        if (currentTime > expirationTime) {
+          // הטוקן פג התוקף
+          handleLogout()
+        }
+      }
+    }
+
+    // בדיקה בעת טעינת הדף
+    checkSessionValidity()
+
+    // בדיקה כל 5 דקות
+    const interval = setInterval(checkSessionValidity, 5 * 60 * 1000)
+
+    return () => clearInterval(interval)
+  }, [])
 
     return (
         <div className="auth-container">

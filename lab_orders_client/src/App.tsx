@@ -28,6 +28,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
 
     if (!token) {
       return;
@@ -36,9 +37,27 @@ function App() {
     const logout = () => {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('tokenExpiration');
+      localStorage.removeItem('logoutTimeoutId');
       navigate('/login');
     };
 
+    // בדיקה של ה-session timeout שהוגדר ב-1 שעה
+    if (tokenExpiration) {
+      const expirationTime = parseInt(tokenExpiration);
+      const currentTime = new Date().getTime();
+      const remainingTime = expirationTime - currentTime;
+
+      if (remainingTime <= 0) {
+        logout();
+        return;
+      }
+
+      const timeoutId = window.setTimeout(logout, remainingTime);
+      return () => window.clearTimeout(timeoutId);
+    }
+
+    // אם יש JWT token, בדוק גם את הexpiration שלו
     try {
       const payload = token.split('.')[1];
       const base64Payload = payload.replace(/-/g, '+').replace(/_/g, '/');
