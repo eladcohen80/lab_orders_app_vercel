@@ -597,8 +597,11 @@
       justify-self: start;
     }
 
-        .orders-export label {
+                .orders-export label {
       font-size: 0.7rem;
+    }
+
+    .orders-export-group label {
       text-align: right;
     }
 
@@ -654,9 +657,9 @@
     grid-column: auto;
   }
 
-    .order-modal {
-    width: min(100%, calc(100vh - 80px));
-    max-height: calc(100vh - 80px);
+        .order-modal {
+    width: min(100%, calc(100vh - 140px));
+    max-height: calc(100vh - 140px);
     padding: 1rem;
     border-radius: 10px;
   }
