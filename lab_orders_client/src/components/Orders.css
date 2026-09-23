@@ -577,17 +577,18 @@
       font-size: 0.8rem;
     }
 
-        .orders-export {
+                .orders-export {
               align-items: flex-start;
-              flex-wrap: nowrap;
+              flex-wrap: wrap;
               gap: 0.5rem;
               width: 100%;
               box-sizing: border-box;
             }
 
-        .orders-export-group {
-      flex: 1;
+                .orders-export-group {
+      flex: 1 0 100%;
       gap: 0.05rem;
+      margin-right: 0.5rem;
     }
 
     .orders-export label {
@@ -646,7 +647,9 @@
     grid-column: auto;
   }
 
-  .order-modal {
+    .order-modal {
+    width: min(100%, calc(100vh - 80px));
+    max-height: calc(100vh - 80px);
     padding: 1rem;
     border-radius: 10px;
   }
