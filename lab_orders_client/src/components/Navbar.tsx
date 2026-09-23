@@ -41,7 +41,7 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
     navigate("/login");
   }
 
-    function toggleMenu(menu: 'orders' | 'suppliers' | 'budgets') {
+  function toggleMenu(menu: 'orders' | 'suppliers' | 'budgets') {
     setOpenMenu((currentMenu) => currentMenu === menu ? null : menu);
   }
 
@@ -49,21 +49,21 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
     setOpenMenu(null);
   }
 
-    function handleDropdownClick(menu: 'orders' | 'suppliers' | 'budgets', e: React.MouseEvent) {
+  function handleDropdownClick(menu: 'orders' | 'suppliers' | 'budgets') {
     // במובייל: פתח את התת-קטגוריות בלחיצה הראשונה
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      toggleMenu(menu);
-    } else {
-      // ב-desktop: toggle עם קליק (mouse events יטפלו בעיקר)
-      toggleMenu(menu);
-    }
+    toggleMenu(menu);
   }
 
-  const dropdownProps = (menu: 'orders' | 'suppliers' | 'budgets') => ({
-    onMouseEnter: () => setOpenMenu(menu),
-    onMouseLeave: closeMenu,
-  });
+  const dropdownProps = (menu: 'orders' | 'suppliers' | 'budgets') => {
+    // במובייל, אל תשתמש ב-mouse events, רק בקליקים
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      return {};
+    }
+    return {
+      onMouseEnter: () => setOpenMenu(menu),
+      onMouseLeave: closeMenu,
+    };
+  };
 
   return (
     <nav className="navbar" ref={navRef}>
@@ -86,8 +86,8 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
 
       {/* תפריט ניווט */}
       <div className={`navbar-links ${mobileOpen ? 'mobile-open' : ''}`}>
-                <div className="nav-dropdown" {...dropdownProps('orders')}>
-          <button type="button" className="nav-menu-button" onClick={(e) => handleDropdownClick('orders', e)} aria-expanded={openMenu === 'orders'} aria-haspopup="menu">
+        <div className="nav-dropdown" {...dropdownProps('orders')}>
+          <button type="button" className="nav-menu-button" onClick={() => handleDropdownClick('orders')} aria-expanded={openMenu === 'orders'} aria-haspopup="menu">
             Orders <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
           {openMenu === 'orders' && (
@@ -97,8 +97,8 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
             </div>
           )}
         </div>
-                <div className="nav-dropdown" {...dropdownProps('suppliers')}>
-          <button type="button" className="nav-menu-button" onClick={(e) => handleDropdownClick('suppliers', e)} aria-expanded={openMenu === 'suppliers'} aria-haspopup="menu">
+        <div className="nav-dropdown" {...dropdownProps('suppliers')}>
+          <button type="button" className="nav-menu-button" onClick={() => handleDropdownClick('suppliers')} aria-expanded={openMenu === 'suppliers'} aria-haspopup="menu">
             Suppliers <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
           {openMenu === 'suppliers' && (
@@ -108,8 +108,8 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
             </div>
           )}
         </div>
-                <div className="nav-dropdown" {...dropdownProps('budgets')}>
-          <button type="button" className="nav-menu-button" onClick={(e) => handleDropdownClick('budgets', e)} aria-expanded={openMenu === 'budgets'} aria-haspopup="menu">
+        <div className="nav-dropdown" {...dropdownProps('budgets')}>
+          <button type="button" className="nav-menu-button" onClick={() => handleDropdownClick('budgets')} aria-expanded={openMenu === 'budgets'} aria-haspopup="menu">
             Budgets <span className="nav-menu-arrow" aria-hidden="true" />
           </button>
           {openMenu === 'budgets' && (
@@ -150,5 +150,3 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
     </nav>
   );
 }
-
-            
