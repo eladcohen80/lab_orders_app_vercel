@@ -58,7 +58,7 @@ app.get('/debug', (_req, res) => {
 // Run DB migration safely
 try {
   sql`ALTER TABLE orders ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'pending'`.catch(
-    (error) => console.error('DB migration warning:', error)
+    (error: unknown) => console.error('DB migration warning:', error)
   );
 } catch (error) {
   console.error('DB migration skipped:', error);

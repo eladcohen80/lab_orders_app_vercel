@@ -1,4 +1,4 @@
-import OrderForm from './components/OrderForm';
+﻿import OrderForm from './components/OrderForm';
 import Orders from './components/Orders';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './App.css'
 import HomePage from './components/HomePage';
 import AskDocuments from './components/AskDocuments'
+import ResetPassword from './components/ResetPassword'
 
 function App() {
   const location = useLocation();
@@ -42,7 +43,7 @@ function App() {
       navigate('/login');
     };
 
-    // בדיקה של ה-session timeout שהוגדר ב-1 שעה
+    // ×‘×“×™×§×” ×©×œ ×”-session timeout ×©×”×•×’×“×¨ ×‘-1 ×©×¢×”
     if (tokenExpiration) {
       const expirationTime = parseInt(tokenExpiration);
       const currentTime = new Date().getTime();
@@ -57,7 +58,7 @@ function App() {
       return () => window.clearTimeout(timeoutId);
     }
 
-    // אם יש JWT token, בדוק גם את הexpiration שלו
+    // ×× ×™×© JWT token, ×‘×“×•×§ ×’× ××ª ×”expiration ×©×œ×•
     try {
       const payload = token.split('.')[1];
       const base64Payload = payload.replace(/-/g, '+').replace(/_/g, '/');
@@ -91,6 +92,7 @@ function App() {
         <Route path="/add-budget" element={<BudgetForm />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
       <AskDocuments />
     </>
@@ -98,3 +100,4 @@ function App() {
 }
 
 export default App
+
