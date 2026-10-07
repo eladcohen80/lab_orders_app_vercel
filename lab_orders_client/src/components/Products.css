@@ -58,6 +58,28 @@
   outline-offset: 1px;
 }
 
+.products-export-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid #16804a;
+  border-radius: 5px;
+  background: #16804a;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.products-export-button:hover,
+.products-export-button:focus-visible {
+  background: #12633e;
+}
+
 .products-list {
   overflow: hidden;
   border: 1px solid var(--border-strong);
@@ -247,6 +269,12 @@
     min-height: 1.85rem;
     max-height: 1.85rem;
     padding: 0.2rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .products-export-button {
+    align-self: flex-start;
+    min-height: 1.85rem;
     font-size: 0.8rem;
   }
 

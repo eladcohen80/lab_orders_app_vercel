@@ -1,6 +1,8 @@
 import { getSuppliers, deleteSupplier } from "../services/supplierService";
 import { useEffect, useState } from "react";
 import type { Supplier } from "../types/Supplier";
+import { FileSpreadsheet } from 'lucide-react';
+import * as XLSX from 'xlsx';
 import outlookIcon from '../assets/outlook_icon.png';
 import whatsappIcon from '../assets/whatsapp_icon.png';
 import SupplierForm from './SupplierForm';
@@ -64,6 +66,26 @@ export default function Suppliers() {
         }
         return 0;
     });
+
+    function handleExport() {
+        if (sortedSuppliers.length === 0) {
+            setMessage(normalizedSearchTerm ? 'No suppliers match your search.' : 'No suppliers found.');
+            return;
+        }
+
+        const worksheet = XLSX.utils.json_to_sheet(sortedSuppliers.map((supplier) => ({
+            'Supplier ID': supplier.supplier_id ?? '',
+            'Supplier Name': supplier.supplier_name,
+            'Contact Person': supplier.contact_person,
+            Email: supplier.email,
+            Phone: supplier.phone,
+        })));
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Suppliers');
+        XLSX.writeFile(workbook, normalizedSearchTerm ? 'matching-suppliers.xlsx' : 'all-suppliers.xlsx');
+        setMessage('');
+    }
+
     async function fetchSuppliers() {
         setIsLoading(true);
         try {
@@ -148,6 +170,16 @@ export default function Suppliers() {
                         placeholder="Search by name, contact, email or phone"
                     />
                 </label>
+                <button
+                    type="button"
+                    className="suppliers-export-button"
+                    onClick={handleExport}
+                    title="Export suppliers to Excel"
+                    aria-label="Export suppliers to Excel"
+                >
+                    <FileSpreadsheet size={21} aria-hidden="true" />
+                    <span>Export</span>
+                </button>
             </div>
             {message && <p className="error-message">{message}</p>}
             {isLoading ? (

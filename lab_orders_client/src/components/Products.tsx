@@ -1,6 +1,8 @@
 import {deleteProduct, getProducts, updateProduct} from "../services/productService";
 import { useEffect, useState } from "react";
 import type { Product } from "../types/Product";
+import { FileSpreadsheet } from 'lucide-react';
+import * as XLSX from 'xlsx';
 import './Products.css';
 
 type SortKey = keyof Product | null;
@@ -35,6 +37,25 @@ export default function Products() {
             return '';
         }
         return sortDirection === 'ascending' ? ' ↑' : ' ↓';
+    }
+
+    function handleExport() {
+        if (sortedProducts.length === 0) {
+            setMessage(normalizedSearchTerm ? 'No products match your search.' : 'No products found.');
+            return;
+        }
+
+        const worksheet = XLSX.utils.json_to_sheet(sortedProducts.map((product) => ({
+            'Product ID': product.product_id ?? '',
+            'Product Name': product.product_name,
+            'Catalog Number': product.cat_number,
+            Supplier: product.supplier,
+            'Last Price/Unit': product.price_in_last_order ?? '',
+        })));
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Products');
+        XLSX.writeFile(workbook, normalizedSearchTerm ? 'matching-products.xlsx' : 'all-products.xlsx');
+        setMessage('');
     }
 
     const normalizedSearchTerm = searchTerm.trim().toLowerCase();
@@ -131,6 +152,16 @@ export default function Products() {
                         placeholder="Search by name, catalog or supplier"
                     />
                 </label>
+                <button
+                    type="button"
+                    className="products-export-button"
+                    onClick={handleExport}
+                    title="Export products to Excel"
+                    aria-label="Export products to Excel"
+                >
+                    <FileSpreadsheet size={21} aria-hidden="true" />
+                    <span>Export</span>
+                </button>
             </div>
             {message && <p className="error-message">{message}</p>}
             {isLoading ? (

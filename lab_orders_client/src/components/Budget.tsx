@@ -1,6 +1,8 @@
 import {getBudgets, updateBudget, deleteBudget} from "../services/budgetService";
 import { useEffect, useState } from "react";
 import type { Budget } from "../types/Budget";
+import { FileSpreadsheet } from 'lucide-react';
+import * as XLSX from 'xlsx';
 import './Budget.css';
 
 type SortKey = keyof Budget | null;
@@ -57,6 +59,23 @@ export default function Budgets() {
         }
         return 0;
     });
+
+    function handleExport() {
+        if (sortedBudgets.length === 0) {
+            setMessage(normalizedSearchTerm ? 'No budgets match your search.' : 'No budgets found.');
+            return;
+        }
+
+        const worksheet = XLSX.utils.json_to_sheet(sortedBudgets.map((budget) => ({
+            'Budget ID': budget.budget_id ?? '',
+            'Budget Name': budget.budget_name,
+            'Budget Balance (ILS)': budget.budget_balance,
+        })));
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Budgets');
+        XLSX.writeFile(workbook, normalizedSearchTerm ? 'matching-budgets.xlsx' : 'all-budgets.xlsx');
+        setMessage('');
+    }
 
     async function fetchBudgets() {
         setIsLoading(true);
@@ -135,6 +154,16 @@ export default function Budgets() {
                         placeholder="Search by name or balance"
                     />
                 </label>
+                <button
+                    type="button"
+                    className="budget-export-button"
+                    onClick={handleExport}
+                    title="Export budgets to Excel"
+                    aria-label="Export budgets to Excel"
+                >
+                    <FileSpreadsheet size={21} aria-hidden="true" />
+                    <span>Export</span>
+                </button>
             </div>
             {message && <p className="message">{message}</p>}
             {isLoading ? (
