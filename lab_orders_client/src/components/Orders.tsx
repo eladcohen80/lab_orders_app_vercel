@@ -262,15 +262,20 @@ export default function Orders() {
                                 <time className="order-date" dateTime={String(order.order_date)}>
                                 {new Date(order.order_date).toLocaleDateString()}
                             </time>
-                            <p className="order-description">{order.description || `Order #${order.order_id}`}</p>
-                            <span className="order-supplier">{order.supplier || 'No supplier'}</span>
-                            <span className="order-budget">{order.budget || '-'}</span>
-                            <span className="order-total">
+                            <p className="order-description" title={order.description || `Order #${order.order_id}`}>{order.description || `Order #${order.order_id}`}</p>
+                            <span className="order-supplier" title={order.supplier || 'No supplier'}>{order.supplier || 'No supplier'}</span>
+                            <span className="order-budget" title={order.budget || '-'}>{order.budget || '-'}</span>
+                            <span
+                                className="order-total"
+                                title={Number.isFinite(Number(order.total_price_nis))
+                                    ? `₪${Number(order.total_price_nis).toLocaleString('en-US')}`
+                                    : '-'}
+                            >
                                 {Number.isFinite(Number(order.total_price_nis))
                                     ? `₪${Number(order.total_price_nis).toLocaleString('en-US')}`
                                     : '-'}
                             </span>
-                            <span className={`order-status order-status-${order.status}`}>
+                            <span className={`order-status order-status-${order.status}`} title={order.status}>
                                 {order.status}
                             </span>
                             <div className="order-actions">
@@ -369,5 +374,3 @@ export default function Orders() {
         </div>
     );
 }
-
-

@@ -209,10 +209,10 @@ export default function Suppliers() {
                     </div>
                     {sortedSuppliers.map(supplier => (
                         <div key={supplier.supplier_id} className="supplier-row">
-                            <div className="supplier-column">{supplier.supplier_name}</div>
-                            <div className="supplier-column">{supplier.contact_person}</div>
-                            <div className="supplier-column">{supplier.email}</div>
-                            <div className="supplier-column">{supplier.phone}</div>
+                            <div className="supplier-column" title={supplier.supplier_name}>{supplier.supplier_name}</div>
+                            <div className="supplier-column" title={supplier.contact_person}>{supplier.contact_person}</div>
+                            <div className="supplier-column" title={supplier.email}>{supplier.email}</div>
+                            <div className="supplier-column" title={supplier.phone}>{supplier.phone}</div>
                             <div className="supplier-column">
                                 <button
                                     className="whatsapp-button"

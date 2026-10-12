@@ -186,8 +186,8 @@ export default function Budgets() {
                     <tbody>
                         {sortedBudgets.map(budget => (
                             <tr key={budget.budget_id}>
-                                <td>{budget.budget_name}</td>
-                                <td>{budget.budget_balance} ILS</td>
+                                <td title={budget.budget_name}>{budget.budget_name}</td>
+                                <td title={`${budget.budget_balance} ILS`}>{budget.budget_balance} ILS</td>
                                 <td>
                                     <button onClick={() => setEditingBudget({ ...budget })}>Edit</button>
                                     <button onClick={() => handleDeleteBudget(budget.budget_id!)}>Delete</button>

@@ -196,10 +196,10 @@ export default function Products() {
                     </div>
                     {sortedProducts.map((product) => (
                         <div className="product-row" key={product.product_id}>
-                            <span>{product.product_name}</span>
-                            <span>{product.cat_number || '-'}</span>
-                            <span>{product.supplier || '-'}</span>
-                            <span>{product.price_in_last_order || '-'}</span>
+                            <span title={product.product_name}>{product.product_name}</span>
+                            <span title={product.cat_number || '-'}>{product.cat_number || '-'}</span>
+                            <span title={product.supplier || '-'}>{product.supplier || '-'}</span>
+                            <span title={product.price_in_last_order || '-'}>{product.price_in_last_order || '-'}</span>
                             <span className="product-actions">
                                 <button type="button" onClick={() => setEditingProduct({ ...product })}>Edit</button>
                                 <button type="button" onClick={() => handleDelete(product.product_id!)}>Delete</button>
