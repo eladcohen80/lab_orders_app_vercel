@@ -135,6 +135,10 @@
   color: var(--text-h);
 }
 
+.suppliers-header .supplier-column:last-child {
+  text-align: right;
+}
+
 .supplier-row .supplier-column {
   min-width: 0;
   overflow: hidden;

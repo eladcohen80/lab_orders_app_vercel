@@ -211,6 +211,10 @@
   white-space: nowrap;
 }
 
+.actions-header {
+  text-align: right;
+}
+
 .sort-button {
   padding: 0;
   border: 0;

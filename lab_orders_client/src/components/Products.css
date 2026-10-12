@@ -148,6 +148,10 @@
   white-space: nowrap;
 }
 
+.products-header > span {
+  text-align: right;
+}
+
 .products-header button:hover {
   color: var(--text-h);
 }

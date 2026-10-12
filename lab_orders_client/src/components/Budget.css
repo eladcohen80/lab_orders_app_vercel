@@ -129,6 +129,7 @@
 
 .budget-table th:last-child {
   cursor: default;
+  text-align: right;
 }
 
 .budget-table tbody tr {
