@@ -1,7 +1,7 @@
 import {deleteProduct, getProducts, updateProduct} from "../services/productService";
 import { useEffect, useState } from "react";
 import type { Product } from "../types/Product";
-import { FileSpreadsheet } from 'lucide-react';
+import { FileSpreadsheet, X } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import './Products.css';
 
@@ -163,7 +163,20 @@ export default function Products() {
                     <span>Export</span>
                 </button>
             </div>
-            {message && <p className="error-message">{message}</p>}
+            {message && (
+                <div className="error-message products-message" role="status" aria-live="polite">
+                    <span>{message}</span>
+                    <button
+                        type="button"
+                        className="products-message-dismiss"
+                        onClick={() => setMessage('')}
+                        aria-label="Dismiss message"
+                        title="Dismiss message"
+                    >
+                        <X size={18} aria-hidden="true" />
+                    </button>
+                </div>
+            )}
             {isLoading ? (
                 <p className="loading-state" role="status" aria-live="polite">
                     Loading<span className="loading-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span>
