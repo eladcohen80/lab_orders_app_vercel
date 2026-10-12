@@ -149,7 +149,8 @@
 }
 
 .products-header > span {
-  text-align: center;
+  text-align: 70%;
+  ;
 }
 
 .products-header button:hover {
