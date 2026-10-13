@@ -5,11 +5,11 @@
   max-height: min(16rem, calc(100vh - 1.5rem));
   overflow: auto;
   padding: 0.55rem 0.75rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
-  background: var(--surface);
-  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.2);
-  color: var(--text-h);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--text-h);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: var(--surface);
   font-size: 1.1rem;
   line-height: 1.4;
   overflow-wrap: anywhere;
