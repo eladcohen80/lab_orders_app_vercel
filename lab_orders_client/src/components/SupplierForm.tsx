@@ -18,7 +18,8 @@ export default function SupplierForm({ initialSupplier, onSuccess, onCancel }: S
             supplier_name: '',
             contact_person: '',
             email: '',
-            phone: ''
+            phone: '',
+            website_url: ''
         }
     );
 
@@ -66,6 +67,17 @@ export default function SupplierForm({ initialSupplier, onSuccess, onCancel }: S
                 <div className="form-group">
                     <label>Phone</label>
                     <input type="text" name="phone" value={supplier.phone} onChange={handleChange} placeholder="Phone" />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="supplier-website-url">Website URL</label>
+                    <input
+                        id="supplier-website-url"
+                        type="url"
+                        name="website_url"
+                        value={supplier.website_url ?? ''}
+                        onChange={handleChange}
+                        placeholder="https://example.com"
+                    />
                 </div>
                 <div className="form-actions">
                     {isEditMode && (

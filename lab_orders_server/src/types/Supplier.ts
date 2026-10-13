@@ -4,5 +4,6 @@ export type Supplier = {
     contact_person: string;
     email: string;
     phone: string;
+    website_url: string | null;
 
 }

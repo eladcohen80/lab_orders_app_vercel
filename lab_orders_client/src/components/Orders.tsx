@@ -191,7 +191,7 @@ export default function Orders() {
     return (
         <div className="orders-container">
             <div className="orders-title-row">
-                <h2>Orders List</h2>
+                <h2>Orders</h2>
                 <label className="list-search" aria-label="Search orders">
                     <input
                         type="search"

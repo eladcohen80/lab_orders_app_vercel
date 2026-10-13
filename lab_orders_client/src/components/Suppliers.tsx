@@ -4,6 +4,7 @@ import type { Supplier } from "../types/Supplier";
 import { FileSpreadsheet } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import outlookIcon from '../assets/outlook_icon.png';
+import websiteIcon from '../assets/website-icon.png';
 import whatsappIcon from '../assets/whatsapp_icon.png';
 import OverflowTooltip from './OverflowTooltip';
 import SupplierForm from './SupplierForm';
@@ -11,6 +12,21 @@ import './Suppliers.css';
 
 type SortKey = keyof Supplier | null;
 type SortDirection = 'ascending' | 'descending' | null;
+
+function getSafeWebsiteUrl(websiteUrl: string | null | undefined): string | null {
+    if (!websiteUrl) {
+        return null;
+    }
+
+    try {
+        const parsedUrl = new URL(websiteUrl);
+        return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:'
+            ? parsedUrl.href
+            : null;
+    } catch {
+        return null;
+    }
+}
 
 export default function Suppliers() {
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
@@ -215,6 +231,18 @@ export default function Suppliers() {
                             <OverflowTooltip className="supplier-column" text={supplier.email} />
                             <OverflowTooltip className="supplier-column" text={supplier.phone} />
                             <div className="supplier-column">
+                                {getSafeWebsiteUrl(supplier.website_url) && (
+                                    <a
+                                        className="website-button"
+                                        href={getSafeWebsiteUrl(supplier.website_url) ?? undefined}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`Open ${supplier.supplier_name} website in a new tab`}
+                                        title="Open supplier website"
+                                    >
+                                        <img src={websiteIcon} alt="" aria-hidden="true" />
+                                    </a>
+                                )}
                                 <button
                                     className="whatsapp-button"
                                     type="button"
