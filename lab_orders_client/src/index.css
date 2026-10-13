@@ -11,6 +11,7 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
+  --component-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -35,20 +36,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
+    --text: #b8c1d1;
     --text-h: #f3f4f6;
-    --bg: #16171d;
-    --surface: #20222b;
-    --surface-muted: #282b36;
-    --border: #2e303a;
-    --border-strong: #444856;
-    --code-bg: #1f2028;
+    --bg: #11141b;
+    --surface: #1b202a;
+    --surface-muted: #292f3c;
+    --border: #424a5b;
+    --border-strong: #596478;
+    --code-bg: #252b36;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
+    --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+      rgba(0, 0, 0, 0.65) 0 12px 24px -6px, rgba(0, 0, 0, 0.4) 0 4px 10px -3px;
   }
 
   #social .button-icon {
@@ -70,23 +72,25 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
+  --component-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --text: #9ca3af;
+  --text: #b8c1d1;
   --text-h: #f3f4f6;
-  --bg: #16171d;
-  --surface: #20222b;
-  --surface-muted: #282b36;
-  --border: #2e303a;
-  --border-strong: #444856;
-  --code-bg: #1f2028;
+  --bg: #11141b;
+  --surface: #1b202a;
+  --surface-muted: #292f3c;
+  --border: #424a5b;
+  --border-strong: #596478;
+  --code-bg: #252b36;
   --accent: #c084fc;
   --accent-bg: rgba(192, 132, 252, 0.15);
   --accent-border: rgba(192, 132, 252, 0.5);
   --social-bg: rgba(47, 48, 58, 0.5);
-  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+  --shadow: rgba(0, 0, 0, 0.65) 0 12px 24px -6px, rgba(0, 0, 0, 0.4) 0 4px 10px -3px;
 }
 
 #root {

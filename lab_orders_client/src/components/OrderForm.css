@@ -27,7 +27,7 @@
   border: 1px solid var(--border-strong);
   border-radius: 12px;
   padding: 1.2rem 1.5rem;
-  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+  box-shadow: var(--component-shadow);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
@@ -316,4 +316,3 @@
     flex-direction: column;
   }
 }
-

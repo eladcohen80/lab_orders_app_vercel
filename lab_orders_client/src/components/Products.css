@@ -115,7 +115,7 @@
   border: 1px solid var(--border-strong);
   border-radius: 10px;
   background: var(--surface);
-  box-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+  box-shadow: var(--component-shadow);
 }
 
 .products-header,
