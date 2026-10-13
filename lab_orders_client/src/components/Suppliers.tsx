@@ -5,6 +5,7 @@ import { FileSpreadsheet } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import outlookIcon from '../assets/outlook_icon.png';
 import whatsappIcon from '../assets/whatsapp_icon.png';
+import OverflowTooltip from './OverflowTooltip';
 import SupplierForm from './SupplierForm';
 import './Suppliers.css';
 
@@ -209,10 +210,10 @@ export default function Suppliers() {
                     </div>
                     {sortedSuppliers.map(supplier => (
                         <div key={supplier.supplier_id} className="supplier-row">
-                            <div className="supplier-column" title={supplier.supplier_name}>{supplier.supplier_name}</div>
-                            <div className="supplier-column" title={supplier.contact_person}>{supplier.contact_person}</div>
-                            <div className="supplier-column" title={supplier.email}>{supplier.email}</div>
-                            <div className="supplier-column" title={supplier.phone}>{supplier.phone}</div>
+                            <OverflowTooltip className="supplier-column" text={supplier.supplier_name} />
+                            <OverflowTooltip className="supplier-column" text={supplier.contact_person} />
+                            <OverflowTooltip className="supplier-column" text={supplier.email} />
+                            <OverflowTooltip className="supplier-column" text={supplier.phone} />
                             <div className="supplier-column">
                                 <button
                                     className="whatsapp-button"

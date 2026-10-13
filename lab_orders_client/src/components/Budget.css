@@ -171,6 +171,14 @@
   font-size: 0.78rem;
 }
 
+.budget-table .budget-cell-text {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .budget-table button:hover {
   border-color: var(--accent);
   color: var(--accent);

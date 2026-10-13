@@ -3,6 +3,7 @@ import type { Order } from '../types/Order';
 import { FileSpreadsheet } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
+import OverflowTooltip from './OverflowTooltip';
 import './Orders.css';
 
 type SortKey = 'order_date' | 'description' | 'supplier' | 'budget' | 'status';
@@ -262,22 +263,16 @@ export default function Orders() {
                                 <time className="order-date" dateTime={String(order.order_date)}>
                                 {new Date(order.order_date).toLocaleDateString()}
                             </time>
-                            <p className="order-description" title={order.description || `Order #${order.order_id}`}>{order.description || `Order #${order.order_id}`}</p>
-                            <span className="order-supplier" title={order.supplier || 'No supplier'}>{order.supplier || 'No supplier'}</span>
-                            <span className="order-budget" title={order.budget || '-'}>{order.budget || '-'}</span>
-                            <span
+                            <OverflowTooltip className="order-description" text={order.description || `Order #${order.order_id}`} />
+                            <OverflowTooltip className="order-supplier" text={order.supplier || 'No supplier'} />
+                            <OverflowTooltip className="order-budget" text={order.budget || '-'} />
+                            <OverflowTooltip
                                 className="order-total"
-                                title={Number.isFinite(Number(order.total_price_nis))
+                                text={Number.isFinite(Number(order.total_price_nis))
                                     ? `₪${Number(order.total_price_nis).toLocaleString('en-US')}`
                                     : '-'}
-                            >
-                                {Number.isFinite(Number(order.total_price_nis))
-                                    ? `₪${Number(order.total_price_nis).toLocaleString('en-US')}`
-                                    : '-'}
-                            </span>
-                            <span className={`order-status order-status-${order.status}`} title={order.status}>
-                                {order.status}
-                            </span>
+                            />
+                            <OverflowTooltip className={`order-status order-status-${order.status}`} text={order.status} />
                             <div className="order-actions">
                                 <button type="button" className="details-button" onClick={() => setSelectedOrder(order)}>
                                     Details

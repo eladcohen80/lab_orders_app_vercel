@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { Budget } from "../types/Budget";
 import { FileSpreadsheet } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import OverflowTooltip from './OverflowTooltip';
 import './Budget.css';
 
 type SortKey = keyof Budget | null;
@@ -186,8 +187,8 @@ export default function Budgets() {
                     <tbody>
                         {sortedBudgets.map(budget => (
                             <tr key={budget.budget_id}>
-                                <td title={budget.budget_name}>{budget.budget_name}</td>
-                                <td title={`${budget.budget_balance} ILS`}>{budget.budget_balance} ILS</td>
+                                <td><OverflowTooltip className="budget-cell-text" text={budget.budget_name} /></td>
+                                <td><OverflowTooltip className="budget-cell-text" text={`${budget.budget_balance} ILS`} /></td>
                                 <td>
                                     <button onClick={() => setEditingBudget({ ...budget })}>Edit</button>
                                     <button onClick={() => handleDeleteBudget(budget.budget_id!)}>Delete</button>

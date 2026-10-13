@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { Product } from "../types/Product";
 import { FileSpreadsheet, X } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import OverflowTooltip from './OverflowTooltip';
 import './Products.css';
 
 type SortKey = keyof Product | null;
@@ -196,10 +197,10 @@ export default function Products() {
                     </div>
                     {sortedProducts.map((product) => (
                         <div className="product-row" key={product.product_id}>
-                            <span title={product.product_name}>{product.product_name}</span>
-                            <span title={product.cat_number || '-'}>{product.cat_number || '-'}</span>
-                            <span title={product.supplier || '-'}>{product.supplier || '-'}</span>
-                            <span title={product.price_in_last_order || '-'}>{product.price_in_last_order || '-'}</span>
+                            <OverflowTooltip text={product.product_name} />
+                            <OverflowTooltip text={product.cat_number || '-'} />
+                            <OverflowTooltip text={product.supplier || '-'} />
+                            <OverflowTooltip text={String(product.price_in_last_order || '-')} />
                             <span className="product-actions">
                                 <button type="button" onClick={() => setEditingProduct({ ...product })}>Edit</button>
                                 <button type="button" onClick={() => handleDelete(product.product_id!)}>Delete</button>
