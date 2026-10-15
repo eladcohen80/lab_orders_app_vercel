@@ -16,7 +16,6 @@
   --danger: #8d292e;
   --danger-hover: #6f2026;
   --danger-hover-text: #fff8ef;
-  --leaf-decoration: #70252a;
   --nav-bg: #174731;
   --nav-text: #f6ead9;
   --nav-border: #2c6149;
@@ -65,7 +64,6 @@
     --danger: #f0a0a4;
     --danger-hover: #d68187;
     --danger-hover-text: #173326;
-    --leaf-decoration: #e7aa9f;
     --nav-bg: #102f22;
     --nav-text: #f4eadb;
     --nav-border: #284b37;
@@ -101,7 +99,6 @@
   --danger: #8d292e;
   --danger-hover: #6f2026;
   --danger-hover-text: #fff8ef;
-  --leaf-decoration: #70252a;
   --nav-bg: #174731;
   --nav-text: #f6ead9;
   --nav-border: #2c6149;
@@ -130,7 +127,6 @@
   --danger: #f0a0a4;
   --danger-hover: #d68187;
   --danger-hover-text: #173326;
-  --leaf-decoration: #e7aa9f;
   --nav-bg: #102f22;
   --nav-text: #f4eadb;
   --nav-border: #284b37;
@@ -156,41 +152,8 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--bg) url('./assets/site-background.png') center / cover fixed no-repeat;
   overflow-x: hidden;
-}
-
-body::before {
-  position: fixed;
-  z-index: 2;
-  top: 22vh;
-  left: max(-2.2rem, calc((100vw - 1400px) / 2 - 2.2rem));
-  width: clamp(22rem, 40vw, 34rem);
-  aspect-ratio: 1016 / 768;
-  background-color: var(--leaf-decoration);
-  -webkit-mask-image: url('./assets/autumn-leaf.png');
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-image: url('./assets/autumn-leaf.png');
-  mask-mode: alpha;
-  mask-position: center;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  content: '';
-  opacity: 0.3;
-  pointer-events: none;
-  transform: rotate(-34deg) scaleX(-1);
-  transform-origin: top left;
-}
-
-@media (max-width: 760px) {
-  body::before {
-    top: 22vh;
-    left: -2.2rem;
-    width: 65vw;
-    opacity: 0.2;
-  }
 }
 
 /* מנע גלישה אופקית לא רצויה בכל האלמנטים */
