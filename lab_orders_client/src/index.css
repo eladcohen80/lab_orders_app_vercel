@@ -10,6 +10,9 @@
   --accent: #8d292e;
   --accent-bg: rgba(141, 41, 46, 0.1);
   --accent-border: rgba(141, 41, 46, 0.5);
+  --table-header-bg: #f0d9cf;
+  --table-header-text: #79272c;
+  --table-header-border: #b65e5f;
   --nav-bg: #174731;
   --nav-text: #f6ead9;
   --nav-border: #2c6149;
@@ -52,6 +55,9 @@
     --accent: #ed9ba0;
     --accent-bg: rgba(237, 155, 160, 0.14);
     --accent-border: rgba(237, 155, 160, 0.5);
+    --table-header-bg: #4b302d;
+    --table-header-text: #f4d7cc;
+    --table-header-border: #a75c5d;
     --nav-bg: #102f22;
     --nav-text: #f4eadb;
     --nav-border: #284b37;
@@ -81,6 +87,9 @@
   --accent: #8d292e;
   --accent-bg: rgba(141, 41, 46, 0.1);
   --accent-border: rgba(141, 41, 46, 0.5);
+  --table-header-bg: #f0d9cf;
+  --table-header-text: #79272c;
+  --table-header-border: #b65e5f;
   --nav-bg: #174731;
   --nav-text: #f6ead9;
   --nav-border: #2c6149;
@@ -103,6 +112,9 @@
   --accent: #ed9ba0;
   --accent-bg: rgba(237, 155, 160, 0.14);
   --accent-border: rgba(237, 155, 160, 0.5);
+  --table-header-bg: #4b302d;
+  --table-header-text: #f4d7cc;
+  --table-header-border: #a75c5d;
   --nav-bg: #102f22;
   --nav-text: #f4eadb;
   --nav-border: #284b37;

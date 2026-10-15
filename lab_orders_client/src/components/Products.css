@@ -129,8 +129,8 @@
 
 .products-header {
   padding: 0.7rem 1rem;
-  background: var(--surface-muted);
-  border-bottom: 2px solid var(--border-strong);
+  background: var(--table-header-bg);
+  border-bottom: 2px solid var(--table-header-border);
 }
 
 .products-header button {
@@ -138,7 +138,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--text);
+  color: var(--table-header-text);
   cursor: pointer;
   font: inherit;
   font-size: 0.85rem;

@@ -119,8 +119,9 @@
 }
 
 .budget-table th {
-  background: var(--surface-muted);
-  color: var(--text);
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  border-bottom-color: var(--table-header-border);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 700;

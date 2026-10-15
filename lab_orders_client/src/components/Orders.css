@@ -194,15 +194,15 @@
 
 .order-header {
   padding: 0.55rem 1rem;
-  border-bottom: 2px solid var(--border-strong);
-  background: var(--surface-muted);
+  border-bottom: 2px solid var(--table-header-border);
+  background: var(--table-header-bg);
 }
 
 .sort-button,
 .column-header,
 .actions-header {
   overflow: hidden;
-  color: var(--text);
+  color: var(--table-header-text);
   font: inherit;
   font-size: 0.85rem;
   font-weight: 700;
@@ -223,7 +223,7 @@
 }
 
 .sort-button:hover {
-  color: var(--text-h);
+  color: var(--accent);
 }
 
 .order-date {
