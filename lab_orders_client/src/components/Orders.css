@@ -298,7 +298,7 @@
 
 .order-status-canceled {
   background: #fee4e2;
-  color: #b42318;
+  color: var(--danger);
 }
 
 .order-actions {
@@ -333,15 +333,15 @@
 
 .order-actions button.delete-button {
   background: transparent;
-  border: 1px solid #b42318 !important;
-  color: #b42318;
+  border: 1px solid var(--danger) !important;
+  color: var(--danger);
 }
 
 .order-actions button.delete-button:hover,
 .order-actions button.delete-button:focus-visible {
-  background: #b42318;
-  border-color: #b42318;
-  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--danger-hover-text);
 }
 
 .order-modal-backdrop {

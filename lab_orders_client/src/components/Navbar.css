@@ -181,8 +181,8 @@
 
 .logout-btn {
   background-color: transparent;
-  color: #e53e3e;
-  border: 1px solid #e53e3e;
+  color: var(--nav-accent);
+  border: 1px solid var(--nav-accent);
   padding: 0.4rem 0.9rem;
   border-radius: 6px;
   cursor: pointer;
@@ -191,8 +191,8 @@
 }
 
 .logout-btn:hover {
-  background-color: #e53e3e;
-  color: white;
+  background-color: var(--nav-accent);
+  color: var(--nav-bg);
 }
 
 /* ── כפתור המבורגר ── */

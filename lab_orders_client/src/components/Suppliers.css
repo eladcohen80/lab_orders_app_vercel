@@ -227,13 +227,14 @@
 }
 
 .supplier-row > .supplier-column:last-child button:last-child {
-  border-color: #b42318;
-  color: #b42318;
+  border-color: var(--danger);
+  color: var(--danger);
 }
 
 .supplier-row > .supplier-column:last-child button:last-child:hover {
-  background: #b42318;
-  color: #fff;
+  border-color: var(--danger-hover);
+  background: var(--danger-hover);
+  color: var(--danger-hover-text);
 }
 
 .modal-overlay {
@@ -267,7 +268,7 @@
   border: 1px solid #fecdca;
   border-radius: 5px;
   background: #fef3f2;
-  color: #b42318;
+  color: var(--danger);
 }
 
 @media (max-width: 760px) {
