@@ -84,6 +84,21 @@ export default function Navbar({ isDarkMode, onToggleTheme }: NavbarProps) {
         </span>
       </button>
 
+      <button
+        type="button"
+        className="theme-toggle mobile-theme-toggle"
+        onClick={onToggleTheme}
+        aria-pressed={isDarkMode}
+        aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+        title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        <span className="theme-toggle-track" aria-hidden="true">
+          <span className="theme-toggle-sun">☀</span>
+          <span className="theme-toggle-moon">☾</span>
+          <span className="theme-toggle-thumb" />
+        </span>
+      </button>
+
       {/* תפריט ניווט */}
       <div className={`navbar-links ${mobileOpen ? 'mobile-open' : ''}`}>
         <div className="nav-dropdown" {...dropdownProps('orders')}>
