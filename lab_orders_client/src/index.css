@@ -1,17 +1,22 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #f8f8fb;
-  --surface: #ffffff;
-  --surface-muted: #f2f3f7;
-  --border: #d9dce5;
-  --border-strong: #c3c8d5;
-  --code-bg: #eef0f5;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --text: #64574b;
+  --text-h: #382623;
+  --bg: #f1e4d2;
+  --surface: #fbf4e9;
+  --surface-muted: #eadbc8;
+  --border: #d6c2a8;
+  --border-strong: #bba58b;
+  --code-bg: #e7d8c4;
+  --accent: #8d292e;
+  --accent-bg: rgba(141, 41, 46, 0.1);
+  --accent-border: rgba(141, 41, 46, 0.5);
+  --nav-bg: #174731;
+  --nav-text: #f6ead9;
+  --nav-border: #2c6149;
+  --nav-accent: #f0a0a4;
+  --nav-accent-bg: rgba(240, 160, 164, 0.16);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --component-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+  --component-shadow: 0 5px 18px rgba(57, 37, 25, 0.1);
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
@@ -36,19 +41,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #b8c1d1;
-    --text-h: #f3f4f6;
-    --bg: #11141b;
-    --surface: #1b202a;
-    --surface-muted: #292f3c;
-    --border: #424a5b;
-    --border-strong: #596478;
-    --code-bg: #252b36;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
+    --text: #d5c7b3;
+    --text-h: #f4eadb;
+    --bg: #17251d;
+    --surface: #20372b;
+    --surface-muted: #2a4436;
+    --border: #3d5848;
+    --border-strong: #587360;
+    --code-bg: #2a4033;
+    --accent: #ed9ba0;
+    --accent-bg: rgba(237, 155, 160, 0.14);
+    --accent-border: rgba(237, 155, 160, 0.5);
+    --nav-bg: #102f22;
+    --nav-text: #f4eadb;
+    --nav-border: #284b37;
+    --nav-accent: #f0a0a4;
+    --nav-accent-bg: rgba(240, 160, 164, 0.16);
     --social-bg: rgba(47, 48, 58, 0.5);
-    --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+    --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
     --shadow:
       rgba(0, 0, 0, 0.65) 0 12px 24px -6px, rgba(0, 0, 0, 0.4) 0 4px 10px -3px;
   }
@@ -60,36 +70,46 @@
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #f8f8fb;
-  --surface: #ffffff;
-  --surface-muted: #f2f3f7;
-  --border: #d9dce5;
-  --border-strong: #c3c8d5;
-  --code-bg: #eef0f5;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
+  --text: #64574b;
+  --text-h: #382623;
+  --bg: #f1e4d2;
+  --surface: #fbf4e9;
+  --surface-muted: #eadbc8;
+  --border: #d6c2a8;
+  --border-strong: #bba58b;
+  --code-bg: #e7d8c4;
+  --accent: #8d292e;
+  --accent-bg: rgba(141, 41, 46, 0.1);
+  --accent-border: rgba(141, 41, 46, 0.5);
+  --nav-bg: #174731;
+  --nav-text: #f6ead9;
+  --nav-border: #2c6149;
+  --nav-accent: #f0a0a4;
+  --nav-accent-bg: rgba(240, 160, 164, 0.16);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --component-shadow: 0 5px 18px rgba(25, 30, 45, 0.06);
+  --component-shadow: 0 5px 18px rgba(57, 37, 25, 0.1);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --text: #b8c1d1;
-  --text-h: #f3f4f6;
-  --bg: #11141b;
-  --surface: #1b202a;
-  --surface-muted: #292f3c;
-  --border: #424a5b;
-  --border-strong: #596478;
-  --code-bg: #252b36;
-  --accent: #c084fc;
-  --accent-bg: rgba(192, 132, 252, 0.15);
-  --accent-border: rgba(192, 132, 252, 0.5);
+  --text: #d5c7b3;
+  --text-h: #f4eadb;
+  --bg: #17251d;
+  --surface: #20372b;
+  --surface-muted: #2a4436;
+  --border: #3d5848;
+  --border-strong: #587360;
+  --code-bg: #2a4033;
+  --accent: #ed9ba0;
+  --accent-bg: rgba(237, 155, 160, 0.14);
+  --accent-border: rgba(237, 155, 160, 0.5);
+  --nav-bg: #102f22;
+  --nav-text: #f4eadb;
+  --nav-border: #284b37;
+  --nav-accent: #f0a0a4;
+  --nav-accent-bg: rgba(240, 160, 164, 0.16);
   --social-bg: rgba(47, 48, 58, 0.5);
-  --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+  --component-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
   --shadow: rgba(0, 0, 0, 0.65) 0 12px 24px -6px, rgba(0, 0, 0, 0.4) 0 4px 10px -3px;
 }
 
