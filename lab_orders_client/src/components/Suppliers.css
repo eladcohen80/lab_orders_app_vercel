@@ -318,7 +318,8 @@
 
   .suppliers-header,
   .supplier-row {
-    min-width: 820px;
+    min-width: 860px;
+    grid-template-columns: 130px 130px 180px 110px minmax(240px, 1fr);
   }
 
   .modal-content {
