@@ -147,16 +147,16 @@
   width: 2.25rem;
   min-height: 2.25rem;
   padding: 0.4rem;
-  border: 1px solid #16794c;
+  border: 1px solid var(--action-bg);
   border-radius: 5px;
-  background: #16794c;
+  background: var(--action-bg);
   color: #fff;
   cursor: pointer;
 }
 
 .export-button:hover,
 .export-button:focus-visible {
-  background: #12633e;
+  background: var(--action-hover);
 }
 
 .orders-list {
@@ -529,10 +529,10 @@
 }
 
 .update-button {
-  border: 1px solid #16794c;
+  border: 1px solid var(--action-bg);
   border-radius: 5px;
   padding: 0.45rem 0.7rem;
-  background: #16794c;
+  background: var(--action-bg);
   color: #fff;
   cursor: pointer;
   font: inherit;

@@ -65,9 +65,9 @@
   gap: 0.4rem;
   min-height: 2rem;
   padding: 0.25rem 0.65rem;
-  border: 1px solid #16804a;
+  border: 1px solid var(--action-bg);
   border-radius: 5px;
-  background: #16804a;
+  background: var(--action-bg);
   color: #fff;
   cursor: pointer;
   font: inherit;
@@ -77,7 +77,7 @@
 
 .suppliers-export-button:hover,
 .suppliers-export-button:focus-visible {
-  background: #12633e;
+  background: var(--action-hover);
 }
 
 .suppliers-list {
