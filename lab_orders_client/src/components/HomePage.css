@@ -40,7 +40,7 @@
   min-height: 18rem;
   object-fit: cover;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 16px;
   box-shadow:
     0 30px 45px -12px rgba(30, 36, 21, 0.58),
     0 12px 22px -8px rgba(30, 36, 21, 0.36),

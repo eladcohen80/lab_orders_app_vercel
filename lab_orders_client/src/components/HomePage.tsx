@@ -1,4 +1,4 @@
-import homeImage from '../assets/Picture1.jpg';
+import homeImage from '../assets/home-lab.png';
 import './HomePage.css';
 
 export default function HomePage() {
